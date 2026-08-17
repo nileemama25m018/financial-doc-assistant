@@ -1,0 +1,85 @@
+{
+  "description": "Manual evaluation question set for the Financial Document Intelligence Assistant. Documents tested: Apple Inc. 2025 Form 10-K, Microsoft Corp 2025 Form 10-K.",
+  "questions": [
+    {
+      "id": 1,
+      "question": "What was Apple's total net sales in 2025?",
+      "type": "numeric_lookup",
+      "mode": "single_document",
+      "document": "Apple 10-K"
+    },
+    {
+      "id": 2,
+      "question": "What was Apple's net income in 2025?",
+      "type": "numeric_lookup",
+      "mode": "single_document",
+      "document": "Apple 10-K"
+    },
+    {
+      "id": 3,
+      "question": "What percentage of Apple's revenue came from Services?",
+      "type": "derived_calculation",
+      "mode": "single_document",
+      "document": "Apple 10-K"
+    },
+    {
+      "id": 4,
+      "question": "What are the main risk factors mentioned in Apple's filing?",
+      "type": "qualitative_prose",
+      "mode": "single_document",
+      "document": "Apple 10-K"
+    },
+    {
+      "id": 5,
+      "question": "What was Microsoft's total revenue for fiscal year 2025?",
+      "type": "numeric_lookup",
+      "mode": "single_document",
+      "document": "Microsoft 10-K"
+    },
+    {
+      "id": 6,
+      "question": "What was Microsoft's operating income?",
+      "type": "numeric_lookup",
+      "mode": "single_document",
+      "document": "Microsoft 10-K"
+    },
+    {
+      "id": 7,
+      "question": "How does Microsoft describe its cloud (Azure) business performance?",
+      "type": "qualitative_prose",
+      "mode": "single_document",
+      "document": "Microsoft 10-K"
+    },
+    {
+      "id": 8,
+      "question": "Compare total revenue between Apple and Microsoft.",
+      "type": "comparison_with_entity_names",
+      "mode": "comparison",
+      "document": "Apple 10-K + Microsoft 10-K",
+      "note": "Deliberately phrased with company names to test grounding behaviour."
+    },
+    {
+      "id": "8b",
+      "question": "What was total revenue?",
+      "type": "comparison_generic",
+      "mode": "comparison",
+      "document": "Apple 10-K + Microsoft 10-K",
+      "note": "Generic rephrasing of question 8."
+    },
+    {
+      "id": 9,
+      "question": "What was net income?",
+      "type": "comparison_generic",
+      "mode": "comparison",
+      "document": "Apple 10-K + Microsoft 10-K"
+    },
+    {
+      "id": 10,
+      "question": "What was Apple's cash and cash equivalents at year end?",
+      "type": "numeric_lookup",
+      "mode": "comparison",
+      "document": "Apple 10-K + Microsoft 10-K",
+      "note": "Run in comparison mode with a company name in the question, surfacing the entity-mislabelling issue."
+    }
+  ]
+}
